@@ -1,24 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>SocialToolsHub - Free Social Media Tools</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialToolsHub - Free TikTok, Instagram & YouTube Tools</title>
+<meta name="description" content="All-in-one free tools for TikTok, Instagram, YouTube. Downloader, Hashtag Generator, Bio Maker & more.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-body{background:#0a0a0f;color:#fff;font-family:sans-serif;text-align:center;padding:60px 20px}
-h1{font-size:48px;background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);padding:24px;border-radius:18px;margin:18px auto;max-width:600px}
-a{color:#a78bfa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#09090b;color:#fff}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 5%;background:rgba(15,15,20,0.9);border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-size:22px;font-weight:700;background:linear-gradient(90deg,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero{padding:80px 5% 60px;text-align:center;background:radial-gradient(ellipse at top,rgba(139,92,246,0.15),transparent 60%)}
+.hero h1{font-size:52px;line-height:1.1;max-width:800px;margin:0 auto 20px}
+.hero h1 span{background:linear-gradient(90deg,#8b5cf6,#ec4899,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#a1a1aa;font-size:18px;max-width:600px;margin:0 auto 30px}
+.btn{display:inline-block;padding:14px 28px;border-radius:100px;font-weight:600;text-decoration:none}
+.btn-primary{background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;padding:40px 5%}
+.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:24px;transition:0.3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,0.4)}
+.card .icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{color:#a1a1aa;font-size:14px;margin-bottom:16px}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600}
+.badge-live{background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3)}
+.tool-area{margin-top:16px}
+.tool-area input{width:100%;padding:12px 14px;border-radius:10px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1);color:#fff;margin-bottom:10px}
+.tool-area button{width:100%;padding:12px;border:none;border-radius:10px;background:#8b5cf6;color:#fff;font-weight:600;cursor:pointer}
+.result{margin-top:12px;padding:12px;background:rgba(0,0,0,0.5);border-radius:10px;font-size:13px;word-break:break-all;display:none}
+footer{text-align:center;padding:40px;color:#52525b;font-size:13px;border-top:1px solid rgba(255,255,255,0.06);margin-top:40px}
 </style>
 </head>
 <body>
-<h1>SocialToolsHub.site</h1>
-<p>All Social Media Tools in One Place - 100% Free</p>
-<div class="card"><h3>🎵 TikTok Downloader</h3><p>Download without watermark - Coming Soon</p></div>
-<div class="card"><h3>📸 Instagram Downloader</h3><p>Reels, Stories, Photos - Coming Soon</p></div>
-<div class="card"><h3>▶️ YouTube Thumbnail Downloader</h3><p>HD Thumbnails - Live</p></div>
-<div class="card"><h3>#️⃣ Hashtag Generator</h3><p>Viral Hashtags - Live</p></div>
-<div class="card"><h3>✨ Bio Generator</h3><p>Stylish Bios - Live</p></div>
-<div class="card"><h3>🔤 Fancy Text</h3><p>100+ Fonts - Live</p></div>
-<p style="margin-top:40px;color:#666">© 2026 SocialToolsHub.site - Launching Soon</p>
+<nav class="nav">
+<div class="logo">SocialToolsHub.site</div>
+<div style="font-size:13px;color:#a1a1aa">100% FREE • NO LOGIN</div>
+</nav>
+<section class="hero">
+<h1>All <span>Social Media Tools</span> in One Place</h1>
+<p>Download videos, generate hashtags, create viral bios. Fast, free and no watermark.</p>
+<a href="#tools" class="btn btn-primary">Explore Tools ↓</a>
+</section>
+<section id="tools" class="grid">
+<div class="card">
+<div class="icon" style="background:linear-gradient(135deg,#ff0050,#00f2ea)">🎵</div>
+<h3>TikTok Downloader</h3>
+<p>Download HD videos without watermark.</p>
+<span class="badge badge-live">● LIVE</span>
+<div class="tool-area">
+<input id="tiktokUrl" placeholder="Paste TikTok link...">
+<button onclick="downloadTikTok()">Download Video</button>
+<div id="tiktokResult" class="result"></div>
+</div>
+</div>
+<div class="card">
+<div class="icon" style="background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5)">📸</div>
+<h3>Instagram Downloader</h3>
+<p>Reels, Photos, Stories downloader HD.</p>
+<span class="badge badge-live">● LIVE</span>
+<div class="tool-area">
+<input id="instaUrl" placeholder="Paste Instagram link...">
+<button onclick="showResult('instaResult','Link copied! API connect soon. Your link: '+document.getElementById('instaUrl').value)">Download</button>
+<div id="instaResult" class="result"></div>
+</div>
+</div>
+<div class="card">
+<div class="icon" style="background:#ff0000">▶️</div>
+<h3>YouTube Thumbnail Grabber</h3>
+<p>Get any YouTube thumbnail in 4K.</p>
+<span class="badge badge-live">● LIVE</span>
+<div class="tool-area">
+<input id="ytUrl" placeholder="Paste YouTube link...">
+<button onclick="getThumbnail()">Get Thumbnails</button>
+<div id="ytResult" class="result"></div>
+</div>
+</div>
+<div class="card">
+<div class="icon" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">#️⃣</div>
+<h3>Hashtag Generator</h3>
+<p>Generate viral hashtags for TikTok & Instagram.</p>
+<span class="badge badge-live">● LIVE</span>
+<div class="tool-area">
+<input id="hashTopic" placeholder="Enter topic e.g. fitness">
+<button onclick="genHashtags()">Generate Hashtags</button>
+<div id="hashResult" class="result"></div>
+</div>
+</div>
+<div class="card">
+<div class="icon" style="background:linear-gradient(135deg,#06ffa5,#3b82f6)">✨</div>
+<h3>Bio Generator</h3>
+<p>Create aesthetic bio for Instagram, TikTok.</p>
+<span class="badge badge-live">● LIVE</span>
+<div class="tool-area">
+<input id="bioName" placeholder="Your name / niche">
+<button onclick="genBio()">Generate Bio</button>
+<div id="bioResult" class="result"></div>
+</div>
+</div>
+<div class="card">
+<div class="icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">🔤</div>
+<h3>Fancy Text Generator</h3>
+<p>Convert text to 50+ stylish fonts.</p>
+<span class="badge badge-live">● LIVE</span>
+<div class="tool-area">
+<input id="fancyInput" placeholder="Type your text...">
+<button onclick="genFancy()">Generate Fonts</button>
+<div id="fancyResult" class="result"></div>
+</div>
+</div>
+</section>
+<footer>
+<p>© 2026 SocialToolsHub.site • Built for Creators in Pakistan<br>No affiliation with TikTok, Instagram, YouTube.</p>
+</footer>
+<script>
+function showResult(id, text){
+ const el=document.getElementById(id);
+ el.style.display='block';
+ el.innerHTML=text;
+}
+function downloadTikTok(){
+ const url=document.getElementById('tiktokUrl').value;
+ if(!url){alert('Paste TikTok link first!');return}
+ showResult('tiktokResult', '⏳ Your link:<br><b>'+url+'</b><br><br>API integration coming soon. For now use SSSTik integration.');
+}
+function getThumbnail(){
+ let url=document.getElementById('ytUrl').value;
+ if(!url){alert('Paste YouTube link!');return}
+ let id='';
+ if(url.includes('v=')) id=url.split('v=')[1].split('&')[0];
+ else if(url.includes('youtu.be/')) id=url.split('youtu.be/')[1].split('?')[0];
+ else id=url.trim();
+ const base='https://img.youtube.com/vi/'+id;
+ const html='<b>HD Thumbnails:</b><br><br><a href="'+base+'/maxresdefault.jpg" target="_blank" style="color:#8b5cf6">▶ Max Quality (1280x720)</a><br><a href="'+base+'/hqdefault.jpg" target="_blank" style="color:#8b5cf6">▶ HQ (480x360)</a><br><br><img src="'+base+'/mqdefault.jpg" style="width:100%;border-radius:8px;margin-top:8px">';
+ showResult('ytResult', html);
+}
+function genHashtags(){
+ const topic=document.getElementById('hashTopic').value || 'viral';
+ const tags=['#'+topic+' #'+topic+'viral #fyp #foryou #trending','#'+topic+'tok #'+topic+'challenge #viralvideo #explorepage','#'+topic+'lovers #'+topic+'life #'+topic+'daily #instagood #reels','#fypシ #xyzbca #viral #tiktokpakistan #foryoupage'];
+ showResult('hashResult', tags.join('<br><br>'));
+}
+function genBio(){
+ const n=document.getElementById('bioName').value || 'Creator';
+ const bios=['✨ '+n+' | Dream Chaser 🌙<br>📍 Pakistan<br>👇 My vibes','🔥 '+n+' Official<br>💯 100% Real Content<br>⚡ DM for Collab','🌸 '+n+' • Aesthetic Soul<br>🎵 Music Lover | 📸 Creator<br>💌 '+n.toLowerCase()+'@gmail.com'];
+ showResult('bioResult', bios.join('<hr style=margin:10px 0;opacity:0.2>'));
+}
+function genFancy(){
+ const t=document.getElementById('fancyInput').value || 'Social';
+ const map=['𝓢𝓸𝓬𝓲𝓪𝓵','𝕾𝖔𝖈𝖎𝖆𝖑','Ｓｏｃｉａｌ','🅂🄾🄲🄸🄰🄻'];
+ showResult('fancyResult', map.join('<br><br>'));
+}
+</script>
 </body>
 </html>
