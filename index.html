@@ -1,78 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Tools Hub - No Ads - Samran</title>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STH - Pro Cards Working</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f1f5f9}
-header{background:#0f172a;color:#fff;padding:15px;display:flex;justify-content:space-between;position:sticky;top:0}
-.logo span{color:#38bdf8}
-.hero{background:#0f172a;color:#fff;text-align:center;padding:30px 10px}
-.grid{max-width:1150px;margin:auto;padding:15px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px}
-.card{background:#fff;padding:18px;border-radius:14px;border-top:4px solid #0f172a;box-shadow:0 4px 10px rgba(0,0,0,.05)}
-.card.yt{border-color:red}.card.insta{border-color:#E1306C}.card.fb{border-color:#1877F2}.card.li{border-color:#0A66C2}.card.music{border-color:#10b981}.card.bday{border-color:#8b5cf6}
-input,select{width:100%;padding:11px;border:1px solid #ddd;border-radius:8px;margin:6px 0}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial} body{background:#f1f5f9}
+header{background:#0f172a;color:#fff;padding:12px;text-align:center}
+#status{max-width:1100px;margin:10px auto;background:#dcfce7;padding:10px;border-radius:8px;display:none;text-align:center;font-weight:bold}
+.card{background:#fff;padding:16px;border-radius:14px;margin:12px auto;max-width:650px;box-shadow:0 4px 10px rgba(0,0,0,.06)}
+input,select{width:100%;padding:11px;border:1.5px solid #ddd;border-radius:8px;margin:5px 0}
 button{width:100%;padding:12px;border:none;border-radius:8px;background:#0f172a;color:#fff;font-weight:700;cursor:pointer}
-#status{max-width:1150px;margin:10px auto;background:#dcfce7;padding:12px;border-radius:8px;display:none;text-align:center;color:#166534;font-weight:bold}
-canvas{width:100%;border-radius:10px;background:#020617;margin-top:10px}
-footer{background:#020617;color:#888;text-align:center;padding:20px;margin-top:20px}footer b{color:#fff}
-</style>
-</head>
-<body>
-<header><div class="logo">STH <span>Social Tools Hub</span></div><div style="font-size:11px;color:#10b981">● NO ADS DIRECT</div></header>
-<div class="hero"><h2>Direct Download <span style="color:#38bdf8">No Ads, No WPS</span></h2><p>YouTube • Insta • TikTok • FB • LinkedIn • MP3 - 100% Direct</p></div>
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;justify-content:center}
+.tab{padding:8px 14px;border-radius:20px;background:#e2e8f0;cursor:pointer;font-size:12px;font-weight:600}
+.tab.active{background:#0f172a;color:#fff}
+/* PRO CARD DESIGN */
+#cardPreview{width:100%;height:520px;border-radius:18px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:.3s}
+.card-bg-birthday{background:linear-gradient(135deg,#ff9a9e,#fecfef,#ffecd2)}
+.card-bg-wedding{background:linear-gradient(135deg,#d4af37,#fff8dc,#ffd700);border:6px double #b8860b}
+.card-bg-baby{background:linear-gradient(135deg,#a1c4fd,#c2e9fb,#d6f5ff)}
+.card-bg-babyshower{background:linear-gradient(135deg,#fbc2eb,#a6c1ee,#fda085)}
+.card-bg-anniversary{background:linear-gradient(135deg,#ff6a88,#ff99ac,#ffecd2)}
+.card-bg-love{background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffdde1)}
+.card-bg-friendship{background:linear-gradient(135deg,#8ec5fc,#e0c3fc,#a8edea)}
+.card-emoji{font-size:60px;margin-bottom:10px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.card-title{font-size:32px;font-weight:900;color:#0f172a;text-shadow:1px 1px 0 #fff}
+.card-name{font-size:36px;font-weight:900;color:#be123c;margin:10px 0;background:#fff;padding:5px 20px;border-radius:30px;box-shadow:0 4px 10px rgba(0,0,0,.15)}
+.card-rel{font-size:18px;font-weight:600;color:#334155;background:rgba(255,255,255,.8);padding:4px 14px;border-radius:20px}
+.card-msg{font-size:18px;font-style:italic;color:#0f172a;margin-top:15px;background:rgba(255,255,255,.85);padding:10px 18px;border-radius:12px;max-width:90%}
+</style></head><body>
+<header><h2>⚡ STH Social Tools Hub - PRO CARDS</h2><p>Downloaders No Ads + Cards Full Design</p></header>
 <div id="status"></div>
 
-<div class="grid">
-<div class="card yt"><h3><i class="fa-brands fa-youtube" style="color:red"></i> YouTube</h3><input id="yt" placeholder="YouTube link yahan paste karo"><button style="background:red" onclick="directDownload('yt','mp4')">⬇️ Direct Download Video</button></div>
-<div class="card insta"><h3><i class="fa-brands fa-instagram" style="color:#E1306C"></i> Instagram</h3><input id="insta" placeholder="Instagram Reels link"><button style="background:#E1306C" onclick="directDownload('insta','mp4')">⬇️ Direct Download</button></div>
-<div class="card"><h3><i class="fa-brands fa-tiktok"></i> TikTok</h3><input id="tik" placeholder="TikTok link"><button style="background:#000" onclick="directDownload('tik','mp4')">⬇️ No Watermark</button></div>
-<div class="card fb"><h3><i class="fa-brands fa-facebook" style="color:#1877F2"></i> Facebook</h3><input id="fb" placeholder="Facebook link"><button style="background:#1877F2" onclick="directDownload('fb','mp4')">⬇️ Direct Download</button></div>
-<div class="card li"><h3><i class="fa-brands fa-linkedin" style="color:#0A66C2"></i> LinkedIn</h3><input id="li" placeholder="LinkedIn video link"><button style="background:#0A66C2" onclick="directDownload('li','mp4')">⬇️ Direct Download</button></div>
-<div class="card"><h3><i class="fa-brands fa-x-twitter"></i> Twitter / X</h3><input id="x" placeholder="Twitter link"><button style="background:#000" onclick="directDownload('x','mp4')">⬇️ Download</button></div>
-<div class="card music"><h3><i class="fa-solid fa-music" style="color:#10b981"></i> YouTube to MP3</h3><input id="mp3" placeholder="YouTube gana link"><button style="background:#10b981" onclick="directDownload('mp3','mp3')">🎵 Direct MP3 Download</button></div>
-<div class="card bday" style="grid-column:span 2"><h3><i class="fa-solid fa-cake-candles" style="color:#8b5cf6"></i> Birthday Card</h3><input id="bName" placeholder="Name" oninput="makeCard()"><select id="bRel" onchange="makeCard()"><option>Friend</option><option>Brother</option><option>Sister</option><option>Everyone</option></select><canvas id="c" width="800" height="400"></canvas><button style="background:#8b5cf6" onclick="makeCard()">Make Card</button><button style="background:#10b981;margin-top:5px" onclick="saveCard()">Download PNG</button></div>
+<div class="card"><h3><i class="fa-solid fa-download"></i> Direct Downloader - No Hola VPN Ad</h3><input id="link" placeholder="YouTube / Insta / TikTok / FB / LinkedIn link"><select id="ftype"><option value="mp4">Video MP4</option><option value="mp3">MP3</option></select><button style="background:red" onclick="directDL()">⬇️ Direct Download</button></div>
+
+<div class="card" style="max-width:1100px">
+<h2 style="text-align:center">🎉 PRO Card Maker - Ab Sirf Name Nahi, Pura Card Banega!</h2>
+<div class="tabs" id="tabs"></div>
+
+<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:14px">
+<div>
+<div id="cardPreview" class="card-bg-birthday">
+<div class="card-emoji" id="cEmoji">🎂</div>
+<div class="card-title" id="cTitle">Happy Birthday!</div>
+<div class="card-name" id="cName">Samran Javed</div>
+<div class="card-rel" id="cRel">My Dearest Husband</div>
+<div class="card-msg" id="cMsg">You are my everything! Stay blessed!</div>
 </div>
-<footer>Developed by <b>SamranJaved</b> - No Ads Version</footer>
+<audio id="audio" controls style="width:100%;margin-top:8px;display:none"></audio>
+<button style="background:#8b5cf6;margin-top:8px" onclick="downloadCardPro()">⬇️ Download Card as PNG</button>
+<button style="background:#10b981;margin-top:6px" onclick="changeDesign()">🎨 Change Design / Color</button>
+</div>
 
+<div>
+<label><b>1. Card Type - Wedding Baby Sab</b></label><select id="cardType" onchange="updateCardPro()"></select>
+<label><b>2. Name - Yahan likho</b></label><input id="bName" value="Samran Javed" placeholder="Jaise: Samran Javed" oninput="updateCardPro()">
+<label><b>3. Relation - Husband / Wife Added</b></label><select id="bRel" onchange="updateCardPro()"><option>Friend</option><option selected>Husband</option><option>Wife</option><option>Brother</option><option>Sister</option><option>Father</option><option>Mother</option><option>Son</option><option>Daughter</option><option>Everyone</option><option>Love</option><option>Best Friend</option><option>Life Partner</option></select>
+<label><b>4. Message - Dil se likho</b></label><input id="bMsg" value="You are my everything!" placeholder="Apna message" oninput="updateCardPro()">
+<label><b>5. Song - Card pe bajega</b></label><select id="bSong" onchange="changeSong()"><option value="">No Music</option><option value="happy" selected>Happy Birthday Song 🎵</option><option value="wedding">Wedding Romantic 💍</option><option value="baby">Baby Lullaby 👶</option><option value="love">Love Song ❤️</option><option value="anniversary">Anniversary 🎉</option></select>
+<p style="font-size:11px;color:#666;margin-top:8px;text-align:center">Ab card me naam ke sath relation, message, design, emoji sab ayega! Sirf naam nahi!</p>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-async function directDownload(id, type){
- let url = document.getElementById(id).value.trim();
- if(!url){alert('Link paste karo bhai!');return;}
- let status = document.getElementById('status');
- status.style.display='block';
- status.innerHTML='⏳ Direct link nikal raha hun... 5 second ruko, ab WPS wala ad nahi ayega!';
+async function directDL(){let u=document.getElementById('link').value.trim();let f=document.getElementById('ftype').value;let s=document.getElementById('status');if(!u){alert('Link paste karo!');return;}s.style.display='block';s.innerHTML='⏳ Direct link... No Ad...';try{let r=await fetch('https://api.cobalt.tools/api/json',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({url:u,aFormat:f==='mp3'?'mp3':'best',isAudioOnly:f==='mp3'})});let d=await r.json();if(d.url){s.innerHTML='✅ Download Start!';window.location.href=d.url;return;}throw 0;}catch(e){s.innerHTML='Backup open, Hola VPN aye to Cancel dabana!';window.open('https://loader.to/api/button/?url='+encodeURIComponent(u)+'&f='+f,'_blank');}}
 
- try{
-   // Method 1: Cobalt API (Best - No Ads)
-   let r = await fetch('https://api.cobalt.tools/api/json', {
-     method:'POST',
-     headers:{'Accept':'application/json','Content-Type':'application/json'},
-     body: JSON.stringify({url:url, vCodec:'h264', vQuality:'720', aFormat: type==='mp3'?'mp3':'best', isAudioOnly: type==='mp3'})
-   });
-   let j = await r.json();
-   if(j.url){
-     status.innerHTML='✅ Direct Link Mil Gaya! Download Start Ho Raha Hai...';
-     window.location.href = j.url; // Direct download
-     setTimeout(()=>{status.style.display='none';}, 3000);
-     return;
-   }
-   throw 0;
- }catch(e){
-   // Method 2: Backup - Loader.to (Ye bhi direct hai, WPS ad nahi)
-   status.innerHTML='⚠️ Backup server use kar raha hun...';
-   let f = (type==='mp3'?'mp3':'mp4');
-   window.open('https://loader.to/api/button/?url='+encodeURIComponent(url)+'&f='+f+'&color=0f172a', '_blank');
-   status.innerHTML='✅ Backup khul gaya - Wahan se Download dabao, WPS ad nahi ayega!';
-   setTimeout(()=>{status.style.display='none';}, 4000);
- }
+const types=[{id:'birthday',name:'🎂 Birthday',title:'Happy Birthday!',emoji:'🎂',bg:'card-bg-birthday'},{id:'wedding',name:'💍 Wedding',title:'Happy Wedding!',emoji:'💍',bg:'card-bg-wedding'},{id:'baby',name:'👶 Baby Birth',title:'Welcome Baby!',emoji:'👶',bg:'card-bg-baby'},{id:'babyshower',name:'🎀 Baby Shower',title:'Baby Shower!',emoji:'🎀',bg:'card-bg-babyshower'},{id:'anniversary',name:'💖 Anniversary',title:'Happy Anniversary!',emoji:'💖',bg:'card-bg-anniversary'},{id:'love',name:'❤️ Husband Wife Love',title:'I Love You!',emoji:'❤️',bg:'card-bg-love'},{id:'friendship',name:'🤝 Friendship',title:'Best Friends Forever!',emoji:'🤝',bg:'card-bg-friendship'}];
+const songs={happy:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',wedding:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',baby:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',love:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',anniversary:'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3'};
+let cur='birthday';let designIdx=0;
+function init(){let tb=document.getElementById('tabs');let sel=document.getElementById('cardType');types.forEach((t,i)=>{let d=document.createElement('div');d.className='tab'+(i==0?' active':'');d.innerText=t.name;d.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));d.classList.add('active');cur=t.id;sel.value=t.id;updateCardPro();};tb.appendChild(d);let o=document.createElement('option');o.value=t.id;o.innerText=t.name;sel.appendChild(o);});sel.value='birthday';updateCardPro();}
+function updateCardPro(){
+ let t=types.find(x=>x.id==document.getElementById('cardType').value)||types[0]; cur=t.id;
+ let name=document.getElementById('bName').value||'Samran Javed';
+ let rel=document.getElementById('bRel').value;
+ let msg=document.getElementById('bMsg').value||'Best Wishes!';
+ let prev=document.getElementById('cardPreview');
+ prev.className=t.bg;
+ document.getElementById('cEmoji').innerText=t.emoji;
+ document.getElementById('cTitle').innerText=t.title;
+ document.getElementById('cName').innerText=name;
+ document.getElementById('cRel').innerText='My Dearest '+rel;
+ document.getElementById('cMsg').innerText=msg;
 }
-function makeCard(){let n=document.getElementById('bName').value||'Samran';let r=document.getElementById('bRel').value;let cv=document.getElementById('c');let x=cv.getContext('2d');x.fillStyle='#020617';x.fillRect(0,0,cv.width,cv.height);x.fillStyle='#38bdf8';x.font='bold 32px Arial';x.textAlign='center';x.fillText('Happy Birthday '+n,cv.width/2,200);x.fillStyle='#fff';x.font='20px Arial';x.fillText('My Dearest '+r,cv.width/2,250);}
-function saveCard(){let cv=document.getElementById('c');let a=document.createElement('a');a.download='birthday.png';a.href=cv.toDataURL();a.click();}
-makeCard();
+function changeSong(){let v=document.getElementById('bSong').value;let a=document.getElementById('audio');if(!v){a.style.display='none';a.pause();return;}a.style.display='block';a.src=songs[v];a.play().catch(()=>{});}
+function changeDesign(){let prev=document.getElementById('cardPreview');let classes=['card-bg-birthday','card-bg-wedding','card-bg-baby','card-bg-babyshower','card-bg-anniversary','card-bg-love','card-bg-friendship'];designIdx=(designIdx+1)%classes.length;prev.className=classes[designIdx];}
+async function downloadCardPro(){let el=document.getElementById('cardPreview');let canvas=await html2canvas(el,{scale:2,useCORS:true});let a=document.createElement('a');a.download=cur+'-card-'+Date.now()+'.png';a.href=canvas.toDataURL();a.click();let s=document.getElementById('status');s.style.display='block';s.innerHTML='✅ Card Downloaded! Pura design wala card!';setTimeout(()=>s.style.display='none',3000);}
+init();
 </script>
-</body>
-</html>
+</body></html>
