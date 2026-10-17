@@ -3,140 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SocialToolsHub - All-in-One Downloader | Developed by SamranJaved</title>
+<title>Social Tools Hub - SamranJaved</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
-body{background:#f8fafc;color:#0f172a}
-header{background:rgba(15,23,42,0.95);backdrop-filter:blur(10px);color:white;padding:18px 30px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
-.logo{font-weight:800;font-size:26px} .logo span{color:#38bdf8} .logo i{color:#38bdf8}
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:white;text-align:center;padding:60px 20px}
-.hero h1{font-size:42px;font-weight:800;line-height:1.2} .hero h1 span{color:#38bdf8}
-.hero p{color:#94a3b8;margin-top:12px;font-size:18px}
-.dashboard{max-width:1200px;margin:-40px auto 20px;background:white;border-radius:20px;padding:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px;box-shadow:0 10px 30px rgba(0,0,0,0.08);position:relative}
-.dash-item{text-align:center;padding:10px;border-right:1px solid #e2e8f0} .dash-item:last-child{border:none}
-.dash-item h3{font-size:28px;color:#0ea5e9} .dash-item p{font-size:13px;color:#64748b;margin-top:4px}
-.container{max-width:1200px;margin:30px auto;padding:0 20px}
-.section-title{font-size:24px;font-weight:700;margin:30px 0 15px}
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
-.card{background:white;border-radius:18px;padding:24px;box-shadow:0 4px 15px rgba(0,0,0,0.05);transition:0.3s;border:1px solid #f1f5f9;position:relative;overflow:hidden}
-.card:hover{transform:translateY(-6px);box-shadow:0 15px 35px rgba(0,0,0,0.1)}
-.card-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;color:white}
-.yt .card-icon{background:#ff0000} .insta .card-icon{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)} .tiktok .card-icon{background:#000} .fb .card-icon{background:#1877F2} .li .card-icon{background:#0A66C2} .tw .card-icon{background:#000} .music .card-icon{background:#10b981} .bday .card-icon{background:#8b5cf6}
-.card h3{font-size:17px;margin-bottom:6px} .card p{font-size:13px;color:#64748b;margin-bottom:12px}
-input,select{width:100%;padding:13px 14px;border:1px solid #e2e8f0;border-radius:12px;outline:none;margin:7px 0;font-size:14px}
-input:focus{border-color:#38bdf8}
-.btn{width:100%;padding:13px;border:none;border-radius:12px;font-weight:700;cursor:pointer;margin-top:8px;transition:0.2s;color:white;background:#0f172a}
-.btn:hover{background:#1e293b;transform:scale(1.02)}
-.btn-yt{background:#ff0000} .btn-music{background:#10b981} .btn-bday{background:#8b5cf6}
-canvas{width:100%;border-radius:14px;margin-top:14px;background:#0f172a}
-footer{background:#020617;color:#64748b;text-align:center;padding:35px 20px;margin-top:50px}
-footer .foot-logo{color:white;font-size:22px;font-weight:800} footer .foot-logo span{color:#38bdf8}
-footer b{color:white}
-@media(max-width:768px){.dashboard{grid-template-columns:repeat(2,1fr);margin:-20px 15px 15px} .hero h1{font-size:28px}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f8fafc}
+header{background:#0f172a;color:#fff;padding:15px 20px;display:flex;justify-content:space-between}
+.logo span{color:#38bdf8}
+.hero{background:#0f172a;color:#fff;text-align:center;padding:45px 15px}
+.hero span{color:#38bdf8}
+.stats{max-width:1100px;margin:-25px auto;background:#fff;display:grid;grid-template-columns:repeat(4,1fr);border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.1);overflow:hidden}
+.stats div{padding:18px;text-align:center;border-right:1px solid #eee}
+.grid{max-width:1100px;margin:20px auto;padding:15px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px}
+.card{background:#fff;padding:20px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,.05);border-top:4px solid #0f172a}
+.youtube{border-color:#ff0000} .music{border-color:#10b981} .bday{border-color:#8b5cf6}
+input,select{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;margin:6px 0}
+button{width:100%;padding:11px;border:none;border-radius:10px;background:#0f172a;color:#fff;font-weight:700;cursor:pointer}
+canvas{width:100%;border-radius:12px;margin-top:10px;background:#020617}
+footer{background:#020617;color:#888;text-align:center;padding:25px;margin-top:30px} footer b{color:#fff}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="logo"><i class="fa-solid fa-cube"></i> STH <span>SocialToolsHub</span></div>
-  <div style="font-size:14px"><i class="fa-solid fa-circle" style="color:#10b981;font-size:10px"></i> All Systems Online</div>
-</header>
-
-<div class="hero">
-  <h1>Download Anything From <span>Social Media</span></h1>
-  <p>Video • Music • MP3 • Birthday Cards - All Tools Free & Fast</p>
+<header><div class="logo">STH <span>Social Tools Hub</span></div><div style="color:#10b981;font-size:12px">● LIVE</div></header>
+<div class="hero"><h1>Download Anything From <span>Social Media</span></h1><p>YouTube • LinkedIn • Instagram • TikTok • Facebook • MP3 Music • Birthday Cards</p></div>
+<div class="stats"><div><h3>8+</h3><p>Tools</p></div><div><h3>MP3</h3><p>Music Added</p></div><div><h3>100%</h3><p>Free</p></div><div><h3>HD</h3><p>Quality</p></div></div>
+<div class="grid">
+<div class="card youtube"><h3><i class="fa-brands fa-youtube" style="color:red"></i> YouTube Downloader</h3><input placeholder="YouTube link"><button style="background:red">Download Video</button></div>
+<div class="card"><h3><i class="fa-brands fa-instagram" style="color:#E1306C"></i> Instagram Downloader</h3><input placeholder="Instagram link"><button>Download</button></div>
+<div class="card"><h3><i class="fa-brands fa-tiktok"></i> TikTok No Watermark</h3><input placeholder="TikTok link"><button>Download</button></div>
+<div class="card"><h3><i class="fa-brands fa-facebook" style="color:#1877F2"></i> Facebook Downloader</h3><input placeholder="Facebook link"><button style="background:#1877F2">Download</button></div>
+<div class="card"><h3><i class="fa-brands fa-linkedin" style="color:#0A66C2"></i> LinkedIn Downloader</h3><input placeholder="LinkedIn link"><button style="background:#0A66C2">Download</button></div>
+<div class="card"><h3><i class="fa-brands fa-x-twitter"></i> Twitter/X Downloader</h3><input placeholder="X link"><button>Download</button></div>
+<div class="card music"><h3><i class="fa-solid fa-music" style="color:#10b981"></i> YouTube to MP3 - Music Downloader</h3><p style="font-size:11px;color:#666">Song download 320kbps</p><input id="musicInput" placeholder="Paste YouTube song link"><button style="background:#10b981" onclick="if(document.getElementById('musicInput').value==''){alert('Link paste karo')}else{document.getElementById('mMsg').innerText='MP3 Ready - Download Started!' }">Download MP3 Song</button><p id="mMsg" style="color:green;font-size:12px"></p></div>
+<div class="card music"><h3><i class="fa-solid fa-headphones" style="color:#10b981"></i> TikTok Music Downloader</h3><input placeholder="TikTok Sound link"><button style="background:#10b981">Download Music</button></div>
+<div class="card bday" style="grid-column:span 2"><h3><i class="fa-solid fa-cake-candles" style="color:#8b5cf6"></i> Birthday Generator - For Everyone</h3><p style="font-size:11px">Friend, Brother, Sister, BF, GF - Card banega</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input id="bName" placeholder="Name likho" oninput="makeCard()"><select id="bRel" onchange="makeCard()"><option>Best Friend</option><option>Brother</option><option>Sister</option><option>Boyfriend</option><option>Girlfriend</option><option>Friend</option></select></div><canvas id="bCanvas" width="800" height="380"></canvas><button style="background:#8b5cf6;margin-top:8px" onclick="makeCard()">Generate Card</button><button style="background:#10b981;margin-top:6px" onclick="let c=document.getElementById('bCanvas'); let a=document.createElement('a'); a.download='birthday.png'; a.href=c.toDataURL(); a.click();">Download Birthday Card</button></div>
 </div>
-
-<div class="dashboard">
-  <div class="dash-item"><h3>8+</h3><p>Premium Tools</p></div>
-  <div class="dash-item"><h3>1M+</h3><p>Downloads</p></div>
-  <div class="dash-item"><h3>100%</h3><p>Free Forever</p></div>
-  <div class="dash-item"><h3>HD</h3><p>Quality</p></div>
-</div>
-
-<div class="container">
-  <h2 class="section-title"><i class="fa-solid fa-fire" style="color:#ff0000"></i> Video Downloaders</h2>
-  <div class="tools">
-
-    <div class="card yt">
-      <div class="card-icon"><i class="fa-brands fa-youtube"></i></div>
-      <h3>YouTube Video Downloader</h3>
-      <p>Download YouTube videos in HD, 1080p, 4K</p>
-      <input id="yt" placeholder="https://youtube.com/watch?v=...">
-      <button class="btn btn-yt" onclick="go('youtube')"><i class="fa-solid fa-download"></i> Download Video</button>
-    </div>
-
-    <div class="card insta">
-      <div class="card-icon"><i class="fa-brands fa-instagram"></i></div>
-      <h3>Instagram Reels Downloader</h3>
-      <p>Reels, Stories, Photos - All in one click</p>
-      <input id="insta" placeholder="https://instagram.com/reel/...">
-      <button class="btn" onclick="go('instagram')"><i class="fa-solid fa-download"></i> Download</button>
-    </div>
-
-    <div class="card tiktok">
-      <div class="card-icon"><i class="fa-brands fa-tiktok"></i></div>
-      <h3>TikTok No Watermark</h3>
-      <p>Download TikTok without watermark</p>
-      <input id="tiktok" placeholder="https://tiktok.com/...">
-      <button class="btn" onclick="go('tiktok')"><i class="fa-solid fa-download"></i> Download</button>
-    </div>
-
-    <div class="card fb">
-      <div class="card-icon"><i class="fa-brands fa-facebook"></i></div>
-      <h3>Facebook Video Downloader</h3>
-      <p>FB Videos, Reels, Stories HD</p>
-      <input id="fb" placeholder="https://facebook.com/...">
-      <button class="btn" style="background:#1877F2" onclick="go('facebook')"><i class="fa-solid fa-download"></i> Download</button>
-    </div>
-
-    <div class="card li">
-      <div class="card-icon"><i class="fa-brands fa-linkedin"></i></div>
-      <h3>LinkedIn Video Downloader</h3>
-      <p>LinkedIn posts & videos downloader</p>
-      <input id="li" placeholder="https://linkedin.com/posts/...">
-      <button class="btn" style="background:#0A66C2" onclick="go('linkedin')"><i class="fa-solid fa-download"></i> Download</button>
-    </div>
-
-    <div class="card tw">
-      <div class="card-icon"><i class="fa-brands fa-x-twitter"></i></div>
-      <h3>Twitter / X Downloader</h3>
-      <p>Download X videos & GIFs</p>
-      <input id="tw" placeholder="https://x.com/...">
-      <button class="btn" onclick="go('twitter')"><i class="fa-solid fa-download"></i> Download</button>
-    </div>
-
-  </div>
-
-  <h2 class="section-title"><i class="fa-solid fa-music" style="color:#10b981"></i> Music Downloaders</h2>
-  <div class="tools">
-
-    <div class="card music">
-      <div class="card-icon"><i class="fa-solid fa-music"></i></div>
-      <h3>YouTube to MP3 Converter</h3>
-      <p>Convert YouTube video to MP3 in 320kbps</p>
-      <input id="ytmp3" placeholder="Paste YouTube link for MP3">
-      <select id="mp3qual"><option>MP3 320kbps - High Quality</option><option>MP3 128kbps</option><option>MP4 Audio</option></select>
-      <button class="btn btn-music" onclick="go('ytmp3')"><i class="fa-solid fa-headphones"></i> Convert to MP3</button>
-    </div>
-
-    <div class="card music">
-      <div class="card-icon"><i class="fa-brands fa-soundcloud"></i></div>
-      <h3>SoundCloud / TikTok MP3</h3>
-      <p>Download any music, TikTok sounds</p>
-      <input id="sound" placeholder="Paste SoundCloud / TikTok sound link">
-      <button class="btn btn-music" onclick="go('soundcloud')"><i class="fa-solid fa-download"></i> Download MP3</button>
-    </div>
-
-    <div class="card bday" style="grid-column: span 2;">
-      <div class="card-icon"><i class="fa-solid fa-cake-candles"></i></div>
-      <h3>Birthday Card Generator - For Everyone</h3>
-      <p>Friend, Brother, Sister, Mother, Father, BF, GF - Sab ke liye</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <input id="bName" placeholder="Name: e.g. Samran">
-        <select id="bRel"><option>Best Friend</option><option>Brother</option><option>Sister</option><option>Mother</option><option>Father</option><option>Boyfriend</option><option>Girlfriend</option><option>Friend</option></select>
-      </div>
-      <button class="btn btn-bday" onclick="makeBday()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Card</button>
-      <canvas id="bCanvas" width="800" height="450
+<footer><p>Developed by <b>SamranJaved</b></p><p style="font-size:11px">© 2026 SocialToolsHub.site</p></footer>
+<script>
+function makeCard(){
+let name=document.getElementById('bName').value||'Samran';
+let rel=document.getElementById('bRel').value;
+let c=document.getElementById('bCanvas'); let ctx=c.getContext('2d');
+ctx.fillStyle='#020617'; ctx.fillRect(0,0,c.width,c.height);
+ctx.fillStyle='#38bdf8'; ctx.font='bold 42px Arial'; ctx.textAlign='center'; ctx.fillText('Happy Birthday!',c.width/2,130);
+ctx.fillStyle='white'; ctx.font='bold 40px Arial'; ctx.fillText(name,c.width/2,200);
+ctx.fillStyle='#aaa'; ctx.font='22px Arial'; ctx.fillText('My Dearest '+rel,c.width/2,250);
+ctx.fillStyle='#666'; ctx.font='14px Arial'; ctx.fillText('STH Social Tools Hub - SamranJaved',c.width/2,320);
+}
+makeCard();
+</script>
+</body>
+</html>
