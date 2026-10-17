@@ -3,153 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Tools Hub - Dashboard</title>
+<title>SocialToolsHub - All-in-One Downloader | Developed by SamranJaved</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f5f7fb;color:#222}
-header{background:#0f172a;color:white;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.logo{font-weight:800;font-size:22px} .logo span{color:#38bdf8}
-nav a{color:white;margin-left:15px;text-decoration:none;font-size:14px}
-.dashboard{background:white;margin:20px;border-radius:12px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin-top:15px}
-.stat-card{background:#0f172a;color:white;padding:15px;border-radius:10px;text-align:center}
-.tools{margin:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.tool-card{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
-.tool-card h3{margin-bottom:10px}
-input{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
-button{background:#0ea5e9;color:white;border:none;padding:10px 15px;border-radius:8px;cursor:pointer;width:100%;font-weight:bold}
-button:hover{background:#0284c7}
-canvas{width:100%;border-radius:10px;margin-top:10px;background:#fff;border:1px solid #eee}
-footer{background:#0f172a;color:#94a3b8;text-align:center;padding:20px;margin-top:30px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
+body{background:#f8fafc;color:#0f172a}
+header{background:rgba(15,23,42,0.95);backdrop-filter:blur(10px);color:white;padding:18px 30px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.logo{font-weight:800;font-size:26px} .logo span{color:#38bdf8} .logo i{color:#38bdf8}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:white;text-align:center;padding:60px 20px}
+.hero h1{font-size:42px;font-weight:800;line-height:1.2} .hero h1 span{color:#38bdf8}
+.hero p{color:#94a3b8;margin-top:12px;font-size:18px}
+.dashboard{max-width:1200px;margin:-40px auto 20px;background:white;border-radius:20px;padding:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px;box-shadow:0 10px 30px rgba(0,0,0,0.08);position:relative}
+.dash-item{text-align:center;padding:10px;border-right:1px solid #e2e8f0} .dash-item:last-child{border:none}
+.dash-item h3{font-size:28px;color:#0ea5e9} .dash-item p{font-size:13px;color:#64748b;margin-top:4px}
+.container{max-width:1200px;margin:30px auto;padding:0 20px}
+.section-title{font-size:24px;font-weight:700;margin:30px 0 15px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+.card{background:white;border-radius:18px;padding:24px;box-shadow:0 4px 15px rgba(0,0,0,0.05);transition:0.3s;border:1px solid #f1f5f9;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-6px);box-shadow:0 15px 35px rgba(0,0,0,0.1)}
+.card-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;color:white}
+.yt .card-icon{background:#ff0000} .insta .card-icon{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)} .tiktok .card-icon{background:#000} .fb .card-icon{background:#1877F2} .li .card-icon{background:#0A66C2} .tw .card-icon{background:#000} .music .card-icon{background:#10b981} .bday .card-icon{background:#8b5cf6}
+.card h3{font-size:17px;margin-bottom:6px} .card p{font-size:13px;color:#64748b;margin-bottom:12px}
+input,select{width:100%;padding:13px 14px;border:1px solid #e2e8f0;border-radius:12px;outline:none;margin:7px 0;font-size:14px}
+input:focus{border-color:#38bdf8}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;font-weight:700;cursor:pointer;margin-top:8px;transition:0.2s;color:white;background:#0f172a}
+.btn:hover{background:#1e293b;transform:scale(1.02)}
+.btn-yt{background:#ff0000} .btn-music{background:#10b981} .btn-bday{background:#8b5cf6}
+canvas{width:100%;border-radius:14px;margin-top:14px;background:#0f172a}
+footer{background:#020617;color:#64748b;text-align:center;padding:35px 20px;margin-top:50px}
+footer .foot-logo{color:white;font-size:22px;font-weight:800} footer .foot-logo span{color:#38bdf8}
 footer b{color:white}
+@media(max-width:768px){.dashboard{grid-template-columns:repeat(2,1fr);margin:-20px 15px 15px} .hero h1{font-size:28px}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">STH <span>Social Tools Hub</span></div>
-  <nav>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#tools">Tools</a>
-  </nav>
+  <div class="logo"><i class="fa-solid fa-cube"></i> STH <span>SocialToolsHub</span></div>
+  <div style="font-size:14px"><i class="fa-solid fa-circle" style="color:#10b981;font-size:10px"></i> All Systems Online</div>
 </header>
 
-<div class="dashboard" id="dashboard">
-  <h2>Welcome to Dashboard</h2>
-  <p>All your social media tools in one place</p>
-  <div class="stats">
-    <div class="stat-card"><h2>8+</h2><p>Total Tools</p></div>
-    <div class="stat-card"><h2>100%</h2><p>Free to Use</p></div>
-    <div class="stat-card"><h2>24/7</h2><p>Working</p></div>
-  </div>
+<div class="hero">
+  <h1>Download Anything From <span>Social Media</span></h1>
+  <p>Video • Music • MP3 • Birthday Cards - All Tools Free & Fast</p>
 </div>
 
-<div class="tools" id="tools">
-
-  <!-- INSTA TOOL -->
-  <div class="tool-card">
-    <h3>📥 Instagram Downloader</h3>
-    <input id="instaLink" placeholder="Paste Instagram link here">
-    <button onclick="downloadTool('insta')">Download</button>
-    <p id="instaResult" style="font-size:13px;margin-top:8px;color:green"></p>
-  </div>
-
-  <!-- TIKTOK TOOL -->
-  <div class="tool-card">
-    <h3>📥 TikTok Downloader</h3>
-    <input id="tiktokLink" placeholder="Paste TikTok link here">
-    <button onclick="downloadTool('tiktok')">Download</button>
-    <p id="tiktokResult" style="font-size:13px;margin-top:8px;color:green"></p>
-  </div>
-
-  <!-- FB TOOL -->
-  <div class="tool-card">
-    <h3>📥 Facebook Downloader</h3>
-    <input id="fbLink" placeholder="Paste Facebook link here">
-    <button onclick="downloadTool('fb')">Download</button>
-    <p id="fbResult" style="font-size:13px;margin-top:8px;color:green"></p>
-  </div>
-
-  <!-- BIRTHDAY TOOL FOR EVERYONE -->
-  <div class="tool-card" style="grid-column: span 2;">
-    <h3>🎂 Birthday Generator For Everyone</h3>
-    <p style="font-size:13px">Boyfriend, Girlfriend, Friend, Brother, Sister - sab ke liye</p>
-    <input id="bName" placeholder="Name likho e.g. Ali">
-    <select id="bRelation" style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ddd">
-      <option value="Friend">Friend</option>
-      <option value="Best Friend">Best Friend</option>
-      <option value="Brother">Brother</option>
-      <option value="Sister">Sister</option>
-      <option value="Boyfriend">Boyfriend</option>
-      <option value="Girlfriend">Girlfriend</option>
-      <option value="Everyone">Everyone</option>
-    </select>
-    <button onclick="makeBirthday()">Generate Birthday Card</button>
-    <canvas id="bCanvas" width="600" height="400"></canvas>
-    <button onclick="downloadCanvas()" style="margin-top:10px;background:#10b981">Download Card</button>
-  </div>
-
+<div class="dashboard">
+  <div class="dash-item"><h3>8+</h3><p>Premium Tools</p></div>
+  <div class="dash-item"><h3>1M+</h3><p>Downloads</p></div>
+  <div class="dash-item"><h3>100%</h3><p>Free Forever</p></div>
+  <div class="dash-item"><h3>HD</h3><p>Quality</p></div>
 </div>
 
-<footer>
-  <p><b>Social Tools Hub</b> - All Tools Free</p>
-  <p style="margin-top:8px">Developed by <b>SamranJaved</b></p>
-  <p style="font-size:12px;margin-top:5px">© 2026 All Rights Reserved</p>
-</footer>
+<div class="container">
+  <h2 class="section-title"><i class="fa-solid fa-fire" style="color:#ff0000"></i> Video Downloaders</h2>
+  <div class="tools">
 
-<script>
-function downloadTool(type){
-  let link = '';
-  if(type=='insta') link = document.getElementById('instaLink').value;
-  if(type=='tiktok') link = document.getElementById('tiktokLink').value;
-  if(type=='fb') link = document.getElementById('fbLink').value;
-  
-  if(!link){ alert('Please paste link first'); return; }
-  
-  // Safe redirect method - not bypassing directly
-  let resultId = type+'Result';
-  document.getElementById(resultId).innerHTML = 'Opening downloader... If not working, copy link and use external site.';
-  // You can add your own API later here
-  window.open('https://www.google.com/search?q='+type+'+video+downloader', '_blank');
-}
+    <div class="card yt">
+      <div class="card-icon"><i class="fa-brands fa-youtube"></i></div>
+      <h3>YouTube Video Downloader</h3>
+      <p>Download YouTube videos in HD, 1080p, 4K</p>
+      <input id="yt" placeholder="https://youtube.com/watch?v=...">
+      <button class="btn btn-yt" onclick="go('youtube')"><i class="fa-solid fa-download"></i> Download Video</button>
+    </div>
 
-function makeBirthday(){
-  const name = document.getElementById('bName').value || 'Friend';
-  const relation = document.getElementById('bRelation').value;
-  const canvas = document.getElementById('bCanvas');
-  const ctx = canvas.getContext('2d');
-  
-  // Background
-  ctx.fillStyle = '#0f172a';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  
-  ctx.fillStyle = '#38bdf8';
-  ctx.font = 'bold 40px Arial';
-  ctx.textAlign = 'center';
-  ctx.fillText('Happy Birthday!', canvas.width/2, 120);
-  
-  ctx.fillStyle = 'white';
-  ctx.font = 'bold 35px Arial';
-  ctx.fillText(name, canvas.width/2, 190);
-  
-  ctx.font = '20px Arial';
-  ctx.fillStyle = '#94a3b8';
-  ctx.fillText('My Dearest ' + relation, canvas.width/2, 230);
-  
-  ctx.font = '16px Arial';
-  ctx.fillStyle = '#cbd5e1';
-  ctx.fillText('Wishing you lots of happiness!', canvas.width/2, 270);
-}
+    <div class="card insta">
+      <div class="card-icon"><i class="fa-brands fa-instagram"></i></div>
+      <h3>Instagram Reels Downloader</h3>
+      <p>Reels, Stories, Photos - All in one click</p>
+      <input id="insta" placeholder="https://instagram.com/reel/...">
+      <button class="btn" onclick="go('instagram')"><i class="fa-solid fa-download"></i> Download</button>
+    </div>
 
-function downloadCanvas(){
-  const canvas = document.getElementById('bCanvas');
-  const link = document.createElement('a');
-  link.download = 'birthday-card.png';
-  link.href = canvas.toDataURL();
-  link.click();
-}
-makeBirthday();
-</script>
+    <div class="card tiktok">
+      <div class="card-icon"><i class="fa-brands fa-tiktok"></i></div>
+      <h3>TikTok No Watermark</h3>
+      <p>Download TikTok without watermark</p>
+      <input id="tiktok" placeholder="https://tiktok.com/...">
+      <button class="btn" onclick="go('tiktok')"><i class="fa-solid fa-download"></i> Download</button>
+    </div>
 
-</body>
-</html>
+    <div class="card fb">
+      <div class="card-icon"><i class="fa-brands fa-facebook"></i></div>
+      <h3>Facebook Video Downloader</h3>
+      <p>FB Videos, Reels, Stories HD</p>
+      <input id="fb" placeholder="https://facebook.com/...">
+      <button class="btn" style="background:#1877F2" onclick="go('facebook')"><i class="fa-solid fa-download"></i> Download</button>
+    </div>
+
+    <div class="card li">
+      <div class="card-icon"><i class="fa-brands fa-linkedin"></i></div>
+      <h3>LinkedIn Video Downloader</h3>
+      <p>LinkedIn posts & videos downloader</p>
+      <input id="li" placeholder="https://linkedin.com/posts/...">
+      <button class="btn" style="background:#0A66C2" onclick="go('linkedin')"><i class="fa-solid fa-download"></i> Download</button>
+    </div>
+
+    <div class="card tw">
+      <div class="card-icon"><i class="fa-brands fa-x-twitter"></i></div>
+      <h3>Twitter / X Downloader</h3>
+      <p>Download X videos & GIFs</p>
+      <input id="tw" placeholder="https://x.com/...">
+      <button class="btn" onclick="go('twitter')"><i class="fa-solid fa-download"></i> Download</button>
+    </div>
+
+  </div>
+
+  <h2 class="section-title"><i class="fa-solid fa-music" style="color:#10b981"></i> Music Downloaders</h2>
+  <div class="tools">
+
+    <div class="card music">
+      <div class="card-icon"><i class="fa-solid fa-music"></i></div>
+      <h3>YouTube to MP3 Converter</h3>
+      <p>Convert YouTube video to MP3 in 320kbps</p>
+      <input id="ytmp3" placeholder="Paste YouTube link for MP3">
+      <select id="mp3qual"><option>MP3 320kbps - High Quality</option><option>MP3 128kbps</option><option>MP4 Audio</option></select>
+      <button class="btn btn-music" onclick="go('ytmp3')"><i class="fa-solid fa-headphones"></i> Convert to MP3</button>
+    </div>
+
+    <div class="card music">
+      <div class="card-icon"><i class="fa-brands fa-soundcloud"></i></div>
+      <h3>SoundCloud / TikTok MP3</h3>
+      <p>Download any music, TikTok sounds</p>
+      <input id="sound" placeholder="Paste SoundCloud / TikTok sound link">
+      <button class="btn btn-music" onclick="go('soundcloud')"><i class="fa-solid fa-download"></i> Download MP3</button>
+    </div>
+
+    <div class="card bday" style="grid-column: span 2;">
+      <div class="card-icon"><i class="fa-solid fa-cake-candles"></i></div>
+      <h3>Birthday Card Generator - For Everyone</h3>
+      <p>Friend, Brother, Sister, Mother, Father, BF, GF - Sab ke liye</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <input id="bName" placeholder="Name: e.g. Samran">
+        <select id="bRel"><option>Best Friend</option><option>Brother</option><option>Sister</option><option>Mother</option><option>Father</option><option>Boyfriend</option><option>Girlfriend</option><option>Friend</option></select>
+      </div>
+      <button class="btn btn-bday" onclick="makeBday()"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Card</button>
+      <canvas id="bCanvas" width="800" height="450
